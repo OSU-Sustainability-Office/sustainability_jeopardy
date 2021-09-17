@@ -24,7 +24,7 @@ const store = {
             new Answer('50%', false)
           ], 200),
           new Question('How many student staff members does the OSU Sustainability Office employ?', [
-            new Answer('6', true),
+            new Answer('5', true),
             new Answer('20', false),
             new Answer('13', false),
             new Answer('2', false)
@@ -36,7 +36,7 @@ const store = {
             new Answer('1998', false)
           ], 400),
           new Question('How many OSU buildings are LEED (or equivalently certified) as \'sustainable\'?', [
-            new Answer('22', true),
+            new Answer('26', true),
             new Answer('5', false),
             new Answer('37', false),
             new Answer('13', false)
@@ -59,7 +59,7 @@ const store = {
             new Answer('Cooking', false)
           ], 200),
           new Question('How many solar arrays can be found on OSU\'s property?', [
-            new Answer('5', true),
+            new Answer('9', true),
             new Answer('8', false),
             new Answer('2', false),
             new Answer('1', false)
@@ -105,8 +105,8 @@ const store = {
             new Answer('2200 miles', false),
             new Answer('1400 miles', false)
           ], 400),
-          new Question('In the Fiscal Year 2016, how much recyclable material was processed by OSU Campus Recycling?', [
-            new Answer('982.46 tons', true),
+          new Question('In the Fiscal Year 2018-2019, how much recyclable material was processed by OSU Campus Recycling?', [
+            new Answer('825.7 tons', true),
             new Answer('320.01 tons', false),
             new Answer('523 pounds', false),
             new Answer('13.37 tons', false)

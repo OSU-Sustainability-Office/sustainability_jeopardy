@@ -103,12 +103,12 @@ export default {
 }
 
 .question {
-  word-break: normal; 
+  word-break: normal;
   text-align: center;
 }
 
 .correct-answer {
-  color: #4A773C; 
+  color: #4A773C;
   font-weight: bold;
 }
 
