@@ -3,13 +3,12 @@
     <el-row class="score-box">
       Your Score: {{points}}
     </el-row>
-    <el-row v-for="pointValue in [100, 200, 300, 400, 500]" :key="pointValue"> 
+    <el-row v-for="pointValue in [100, 200, 300, 400, 500]" :key="pointValue">
       <el-col class="categories" :span="8" v-for="category in categories" :key="category">
         <center><h1 class="category-labels" v-if="pointValue === 100">{{ category }}</h1></center>
         <question v-bind:category="category" v-bind:points="pointValue" />
       </el-col>
     </el-row>
-    
     <el-dialog
       :title="'You scored: ' + points + '!'"
       :visible.sync="answeredAll"
@@ -69,7 +68,7 @@ export default {
   }
 
   .score-box {
-    text-align: center; 
+    text-align: center;
     font-size: 1.5em;
     padding-bottom: 10px;
   }
