@@ -11,35 +11,35 @@ const store = {
       {
         name: 'Sustainability at OSU',
         questions: [ // An array of question objects. Refer to question.js
-          new Question('What is the OSU Sustainability Office\'s main focus?', [
-            new Answer('All of These', true),
-            new Answer('Reducing Carbon Emissions', false),
-            new Answer('Green Buildings', false),
-            new Answer('Tracking Utility Consumption', false)
+          new Question('What is the main focus of the EcoReps?', [
+            new Answer('All of these!', true),
+            new Answer('Educating residents about sustainability topics', false),
+            new Answer('Assisting with marketing of sustainability programs', false),
+            new Answer('Planning sustainability-focused events', false)
           ], 100),
-          new Question('What percentage of students walk, bike, or use other non-motorized means to get to campus?', [
-            new Answer('70%', true),
-            new Answer('20%', false),
-            new Answer('100%', false),
-            new Answer('50%', false)
+          new Question("OSU's three green certifications contain simple yet effective ways for the OSU community to further its sustainability efforts and get recognition for its hard work. How many offices have been certified?", [
+            new Answer('21', true),
+            new Answer('34', false),
+            new Answer('12', false),
+            new Answer('58', false)
           ], 200),
-          new Question('How many student staff members does the OSU Sustainability Office employ?', [
-            new Answer('5', true),
-            new Answer('20', false),
-            new Answer('13', false),
-            new Answer('2', false)
+          new Question('How many tons of CO2e have been offset since the beginning of the Carbon Travel Offsets program in 2019?', [
+            new Answer('30.15', true),
+            new Answer('50.32', false),
+            new Answer('130.2', false),
+            new Answer('250.3', false)
           ], 300),
-          new Question('In what year was the OSU Sustainability Office established?', [
-            new Answer('2005', true),
-            new Answer('1970', false),
-            new Answer('1897', false),
-            new Answer('1998', false)
+          new Question('How many credits does it take to complete a Sustainability Double Degree at OSU?', [
+            new Answer('32', true),
+            new Answer('120', false),
+            new Answer('67', false),
+            new Answer('80', false)
           ], 400),
-          new Question('How many OSU buildings are LEED (or equivalently certified) as \'sustainable\'?', [
-            new Answer('26', true),
-            new Answer('5', false),
-            new Answer('37', false),
-            new Answer('13', false)
+          new Question('The OSU Path to Carbon Neutrality outlines and prioritizes actions OSU must take to achieve carbon neutrality in 2025. Which of the following are actions included in the Path to Carbon Neutrality?', [
+            new Answer('All of them', true),
+            new Answer('Improve Existing Building Efficiency', false),
+            new Answer('Engage University Community', false),
+            new Answer('Decarbonize Major Capital Projects', false)
           ], 500)
         ]
       },
@@ -58,23 +58,23 @@ const store = {
             new Answer('Lighting', false),
             new Answer('Cooking', false)
           ], 200),
-          new Question('How many solar arrays can be found on OSU\'s property?', [
-            new Answer('9', true),
+          new Question("How many solar array fields are on OSU's soil?", [
+            new Answer('5', true),
             new Answer('8', false),
             new Answer('2', false),
-            new Answer('1', false)
+            new Answer('0', false)
           ], 300),
-          new Question('What is the only LEED (Leadership in Energy & Environmental Design) Platinum certified building on campus?', [
-            new Answer('The Energy Center', true),
-            new Answer('Valley Library', false),
-            new Answer('Kelley Engineering Center', false),
-            new Answer('Dixon Recreation Center', false)
+          new Question("OSU's Energy Consumption Rule outlines expectations for acceptable and expected building operating temperatures. What are the expected building temperatures in the winter season?", [
+            new Answer('66°F - 70°F', true),
+            new Answer('55°F - 85°F', false),
+            new Answer('75°F - 85°F', false),
+            new Answer('72°F - 75°F', false)
           ], 400),
-          new Question('OSU is working with the Bonneville Power Administration to develop what technology?', [
-            new Answer('Wind Forecasting Models', true),
-            new Answer('Thin Film Flexible Substrate Solar Panels', false),
-            new Answer('Uses for Oregon\'s Biomass', false),
-            new Answer('Compound Multi-Nucleic Flux Capacitors', false)
+          new Question('What is the average daily energy that a student living in a resident hall consumes?', [
+            new Answer('6 kWh or 316 cellphone chargers', true),
+            new Answer('8 kWh or 421 cellphone chargers', false),
+            new Answer('2 kWh or 105 cellphone chargers', false),
+            new Answer('10 kWh or 526 cellphone chargers', false)
           ], 500)
         ]
       },
@@ -84,8 +84,8 @@ const store = {
           new Question('What year did OSU first celebrate Earth Day?', [
             new Answer('1970', true),
             new Answer('1999', false),
-            new Answer('1984', false),
-            new Answer('2008', false)
+            new Answer('2010', false),
+            new Answer('2002', false)
           ], 100),
           new Question('How many catalogued trees are on OSU\'s campus?', [
             new Answer('Over 5000', true),
@@ -93,7 +93,7 @@ const store = {
             new Answer('3000 to 4000', false),
             new Answer('4000 to 5000', false)
           ], 200),
-          new Question('What percentage of U.S. landfills are made up of food waste and yard trimmings?', [
+          new Question('What percent of food waste and yard trimmings fill U.S. landfills?', [
             new Answer('25%', true),
             new Answer('80%', false),
             new Answer('50%', false),
@@ -105,11 +105,11 @@ const store = {
             new Answer('2200 miles', false),
             new Answer('1400 miles', false)
           ], 400),
-          new Question('In the Fiscal Year 2018-2019, how much recyclable material was processed by OSU Campus Recycling?', [
-            new Answer('825.7 tons', true),
-            new Answer('320.01 tons', false),
-            new Answer('523 pounds', false),
-            new Answer('13.37 tons', false)
+          new Question('In the Fiscal Year 2020-2021, how much recyclable material was processed by OSU Campus Recycling?', [
+            new Answer('315 tons', true),
+            new Answer('1200 lbs', false),
+            new Answer('1600 tons', false),
+            new Answer('450 tons', false)
           ], 500)
         ]
       }
