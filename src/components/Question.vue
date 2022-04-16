@@ -14,7 +14,7 @@
       <span class="correct-answer">{{ answered === true ? questionData.answers.filter(ans => ans.isCorrect)[0].answerText : '' }}</span>
     </div>
     <span slot="footer" class="dialog-footer">
-      <el-radio-group @change="handleAnswer" :disabled="answered" v-model="selectedAnswer" size="mini">
+      <el-radio-group @change="handleAnswer" :disabled="answered" v-model="selectedAnswer" size="small">
         <el-radio border v-for="(answer, index) in questionData.answers" :key="index" :label="index" @click="handleAnswer">{{ answer.answerText }}</el-radio>
       </el-radio-group>
     </span>
@@ -69,7 +69,7 @@ export default {
   text-align: center;
   background-color: $--color-primary;
   height: 13vh;
-  margin: .5em;
+  margin: .1em;
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -81,7 +81,11 @@ export default {
 .active {
   cursor: pointer;
   border-color: black;
-  border-width: 2px;
+  border-width: 0px;
+}
+
+.el-card {
+  border-radius:0;
 }
 
 .active:hover {
