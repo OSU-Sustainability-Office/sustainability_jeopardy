@@ -9,9 +9,8 @@
 const path = require('path')
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/sustainability_jeopardy/'
-    : '/',
+  publicPath:
+    process.env.NODE_ENV === 'production' ? '/sustainability_jeopardy/' : '/',
   css: {
     loaderOptions: {
       sass: {
@@ -22,9 +21,7 @@ module.exports = {
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'scss',
-      patterns: [
-        path.resolve(__dirname, 'src/assets/style-variable.scss')
-      ]
+      patterns: [path.resolve(__dirname, 'src/assets/style-variable.scss')]
     }
   },
   configureWebpack: {
@@ -38,11 +35,7 @@ module.exports = {
         {
           test: /\.js$/,
           include: path.resolve(__dirname, 'src'),
-          use: [
-            'cache-loader',
-            'thread-loader',
-            'babel-loader'
-          ]
+          use: ['cache-loader', 'thread-loader', 'babel-loader']
         }
       ]
     }
