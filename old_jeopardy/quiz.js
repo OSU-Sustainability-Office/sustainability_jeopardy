@@ -1,4 +1,3 @@
-
 /*
  * Quiz script.
  * Copyright 2013 Google Inc.
@@ -19,54 +18,55 @@
  * limitations under the License.
  */
 
- // First, enable email list signup.
+// First, enable email list signup.
 function postToMailList() {
   $.ajax({
     url: "./joinMailingList.php",
-    type: 'POST',
+    type: "POST",
     data: {
-        'email': document.getElementById("email").value,
-        'fullname': document.getElementById("name").value,
-        'pw': '1234567',
-        'pw-conf': '1234567',
-        'language': 'en',
-        'digest': '0'
+      email: document.getElementById("email").value,
+      fullname: document.getElementById("name").value,
+      pw: "1234567",
+      "pw-conf": "1234567",
+      language: "en",
+      digest: "0",
     },
-    contentType: 'application/json; charset=utf-8',
+    contentType: "application/json; charset=utf-8",
     success: function (result) {
-       // CallBack(result);
-       console.log(result);
-       console.log("Success!")
+      // CallBack(result);
+      console.log(result);
+      console.log("Success!");
     },
     error: function (error) {
-       console.log(error);
-    }
+      console.log(error);
+    },
   });
   closeEmailPopup();
 }
- // Also, allow users to close the email_popup div.
+// Also, allow users to close the email_popup div.
 function closeEmailPopup() {
   document.getElementById("popup").style.visibility = "hidden";
 }
 
 // Shuffle Code from StackOverflow
 function shuffle(array) {
-var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
 
-// While there remain elements to shuffle...
-while (0 !== currentIndex) {
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
 
-  // Pick a remaining element...
-  randomIndex = Math.floor(Math.random() * currentIndex);
-  currentIndex -= 1;
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
 
-  // And swap it with the current element.
-  temporaryValue = array[currentIndex];
-  array[currentIndex] = array[randomIndex];
-  array[randomIndex] = temporaryValue;
-}
-
-return array;
+  return array;
 }
 
 function downloadQuestions(answers) {
@@ -74,77 +74,83 @@ function downloadQuestions(answers) {
     method: "GET",
     url: "./questions.csv",
     datatype: "JSON",
-    async: false
-
-  }).done(function(obj){
-    // for (var i = 0; i < 3; i++) {
-    //   categories.push(obj.values[0][i+1]);
-    //   questions.push([]);
-    //   for (var x = 0; x < 5; x++) {
-    //     var s = obj.values[x+1][i+1];
-    //     questions[i].push([s.split(";")]);
-    //   }
-    // }
-    var r = 0;
-    var i = 1;
-    console.log(obj);
-    for (x in $("#questions").children()) {
-      child = $("#questions").children()[x];
-      if (child.nodeType !== 1)
-          continue;
-      if (child.nodeName.toLowerCase() === "h2") {
-        //Categories
-        i = 1;
-        r++;
-        child.innerHTML = obj.values[0][r];
-      }
-      if (child.nodeName.toLowerCase() === "p") {
-        if (i % 2 == 0) {
-          //Answers
-          child.innerText = obj.values[Math.floor(i/2)][r].split(";")[1];
-          i++;
+    async: false,
+  })
+    .done(function (obj) {
+      // for (var i = 0; i < 3; i++) {
+      //   categories.push(obj.values[0][i+1]);
+      //   questions.push([]);
+      //   for (var x = 0; x < 5; x++) {
+      //     var s = obj.values[x+1][i+1];
+      //     questions[i].push([s.split(";")]);
+      //   }
+      // }
+      var r = 0;
+      var i = 1;
+      console.log(obj);
+      for (x in $("#questions").children()) {
+        child = $("#questions").children()[x];
+        if (child.nodeType !== 1) continue;
+        if (child.nodeName.toLowerCase() === "h2") {
+          //Categories
+          i = 1;
+          r++;
+          child.innerHTML = obj.values[0][r];
         }
-        else {
-          //Questions
-          child.innerText = obj.values[Math.ceil(i/2)][r].split(";").shift().toString();
-          answers[Math.ceil(i/2)].push(obj.values[Math.ceil(i/2)][r].split(";").slice(2,6));
-          i++;
+        if (child.nodeName.toLowerCase() === "p") {
+          if (i % 2 == 0) {
+            //Answers
+            child.innerText = obj.values[Math.floor(i / 2)][r].split(";")[1];
+            i++;
+          } else {
+            //Questions
+            child.innerText = obj.values[Math.ceil(i / 2)][r]
+              .split(";")
+              .shift()
+              .toString();
+            answers[Math.ceil(i / 2)].push(
+              obj.values[Math.ceil(i / 2)][r].split(";").slice(2, 6)
+            );
+            i++;
+          }
         }
       }
-    }
-  }).fail(function(err) {
-    console.log("failed to populate "  + err);
-  });
+    })
+    .fail(function (err) {
+      console.log("failed to populate " + err);
+    });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   /* Must be two. */
-  var teams = ['Current Score: '];
+  var teams = ["Current Score: "];
 
-  var strTie = 'Tie';
-  var strClose = 'Close';
+  var strTie = "Tie";
+  var strClose = "Close";
 
   /***********************************************/
   /* No need to configure anything further down. */
   /***********************************************/
 
-  var NS = 'http://www.w3.org/1999/xhtml';
+  var NS = "http://www.w3.org/1999/xhtml";
   var D = document;
 
   /* Get categories and questions from DOM. */
-  var answers = [[],[],[],[],[],[]];
+  var answers = [[], [], [], [], [], []];
   downloadQuestions(answers);
   console.log(answers);
 
-  var categories = (function() {
-    var ret = [], questions = null, question = null;
-    var el = D.getElementById('questions').firstChild;
+  var categories = (function () {
+    var ret = [],
+      questions = null,
+      question = null;
+    var el = D.getElementById("questions").firstChild;
     for (; el !== null; el = el.nextSibling) {
       if (el.nodeType !== 1) {
         continue;
       }
 
-      if (el.nodeName.toLowerCase() === 'h2') {
+      if (el.nodeName.toLowerCase() === "h2") {
         questions = [];
         question = null;
         ret.push({
@@ -158,20 +164,20 @@ document.addEventListener('DOMContentLoaded', function() {
         continue;
       }
 
-      if (el.nodeName.toLowerCase() === 'p') {
-        var e = D.createElementNS(NS, 'div');
+      if (el.nodeName.toLowerCase() === "p") {
+        var e = D.createElementNS(NS, "div");
         el.parentNode.replaceChild(e, el);
         e.appendChild(el);
         el = e;
-      } else if (el.nodeName.toLowerCase() !== 'div') {
+      } else if (el.nodeName.toLowerCase() !== "div") {
         continue;
       }
 
       if (question === null) {
-        el.className = 'q';
+        el.className = "q";
         question = el;
       } else {
-        el.className = 'a';
+        el.className = "a";
         questions.push([question, el]);
         question = null;
       }
@@ -179,25 +185,23 @@ document.addEventListener('DOMContentLoaded', function() {
     return ret;
   })();
 
-  
   console.log(questions);
   /* Scores will be saved here. */
   var scores = [];
 
-
   /* Helper functions */
 
-  var nukeChildren = function(el) {
+  var nukeChildren = function (el) {
     while (el.firstChild) {
       el.removeChild(el.firstChild);
     }
   };
 
-  var addText = function(el, text) {
+  var addText = function (el, text) {
     el.appendChild(D.createTextNode(text));
   };
 
-  var addNewElement = function(parent, el, opt_text) {
+  var addNewElement = function (parent, el, opt_text) {
     var el = D.createElementNS(NS, el);
     parent.appendChild(el);
     if (opt_text) {
@@ -206,49 +210,73 @@ document.addEventListener('DOMContentLoaded', function() {
     return el;
   };
 
-  var addNewClass = function(el, class_name){
+  var addNewClass = function (el, class_name) {
     el.className += " " + class_name;
-  }
+  };
 
   /* Create the question board. */
 
-  var mDiv, div, makeTeamClickHandler, linksList, xLink, answer2Link, correctAnswerLink, answer3Link, answer4Link, closeLink;
+  var mDiv,
+    div,
+    makeTeamClickHandler,
+    linksList,
+    xLink,
+    answer2Link,
+    correctAnswerLink,
+    answer3Link,
+    answer4Link,
+    closeLink;
 
-  (function() {
-    mDiv = addNewElement(D.getElementsByTagName('body')[0], 'div');
-    mDiv.id = 'm';
+  (function () {
+    mDiv = addNewElement(D.getElementsByTagName("body")[0], "div");
+    mDiv.id = "m";
 
-    div = addNewElement(addNewElement(mDiv, 'div'), 'div');
+    div = addNewElement(addNewElement(mDiv, "div"), "div");
 
-    xLink = addNewElement(div, 'a', 'x');
-    xLink.id = 'x';
+    xLink = addNewElement(div, "a", "x");
+    xLink.id = "x";
 
-    linksList = addNewElement(div, 'ul');
-    linksList.id = 'links';
+    linksList = addNewElement(div, "ul");
+    linksList.id = "links";
 
-    correctAnswerLink = addNewElement(addNewElement(linksList, 'li'), 'button', 'One');
-    answer2Link   = addNewElement(addNewElement(linksList, 'li'), 'button', 'Two');
-    answer3Link = addNewElement(addNewElement(linksList, 'li'), 'button', 'Three');
-    answer4Link = addNewElement(addNewElement(linksList, 'li'), 'button', 'Four');
-    addNewClass(correctAnswerLink, 'btn_select');
-    addNewClass(answer2Link, 'btn_select');
-    addNewClass(answer3Link, 'btn_select');
-    addNewClass(answer4Link, 'btn_select');
+    correctAnswerLink = addNewElement(
+      addNewElement(linksList, "li"),
+      "button",
+      "One"
+    );
+    answer2Link = addNewElement(
+      addNewElement(linksList, "li"),
+      "button",
+      "Two"
+    );
+    answer3Link = addNewElement(
+      addNewElement(linksList, "li"),
+      "button",
+      "Three"
+    );
+    answer4Link = addNewElement(
+      addNewElement(linksList, "li"),
+      "button",
+      "Four"
+    );
+    addNewClass(correctAnswerLink, "btn_select");
+    addNewClass(answer2Link, "btn_select");
+    addNewClass(answer3Link, "btn_select");
+    addNewClass(answer4Link, "btn_select");
 
-    var el = addNewElement(div, 'ul');
-    closeLink = addNewElement(addNewElement(el, 'li'), 'button', strClose);
-    addNewClass(closeLink, 'btn_select btn_blue_light');
+    var el = addNewElement(div, "ul");
+    closeLink = addNewElement(addNewElement(el, "li"), "button", strClose);
+    addNewClass(closeLink, "btn_select btn_blue_light");
   })();
-
 
   /* Build table with quesitons. */
 
-  var makeClickHandler = (function() {
+  var makeClickHandler = (function () {
     var questionShown = false;
     var question, points, td;
 
-    var close = function() {
-      mDiv.className = '';
+    var close = function () {
+      mDiv.className = "";
       questionShown = false;
       question[0].parentNode.removeChild(question[0]);
       question[1].parentNode.removeChild(question[1]);
@@ -257,18 +285,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     xLink.onclick = close;
 
-    (function() {
-      makeTeamClickHandler = function(team) {
-        return function() {
+    (function () {
+      makeTeamClickHandler = function (team) {
+        return function () {
           if (team !== -1) {
             scores[team][0] += points;
             nukeChildren(scores[team][1]);
-            addText(scores[team][1], '' + scores[team][0]);
-            td.className = 'correct';
-            m.getElementsByClassName("a")[0].children[0].innerHTML = "<h1 style='color:#74D174'>Correct!</h1><br /> " + m.getElementsByClassName("a")[0].children[0].innerHTML;
+            addText(scores[team][1], "" + scores[team][0]);
+            td.className = "correct";
+            m.getElementsByClassName("a")[0].children[0].innerHTML =
+              "<h1 style='color:#74D174'>Correct!</h1><br /> " +
+              m.getElementsByClassName("a")[0].children[0].innerHTML;
           }
-          m.className += ' showAnswer';
-          console.log(m)
+          m.className += " showAnswer";
+          console.log(m);
           td.onclick = null;
           if (team !== 0) close();
           return false;
@@ -279,8 +309,8 @@ document.addEventListener('DOMContentLoaded', function() {
       closeLink.onclick = makeTeamClickHandler(-1);
     })();
 
-    return function(_question, _points) {
-      return function() {
+    return function (_question, _points) {
+      return function () {
         if (!questionShown) {
           question = _question;
           points = _points;
@@ -292,58 +322,76 @@ document.addEventListener('DOMContentLoaded', function() {
           // Populate Questions with the Correct Answers
           nukeChildren(mDiv);
 
-          div = addNewElement(addNewElement(mDiv, 'div'), 'div');
+          div = addNewElement(addNewElement(mDiv, "div"), "div");
 
-          xLink = addNewElement(div, 'a', 'x');
-          xLink.id = 'x';
+          xLink = addNewElement(div, "a", "x");
+          xLink.id = "x";
 
-          linksList = addNewElement(div, 'ul');
-          linksList.id = 'links';
+          linksList = addNewElement(div, "ul");
+          linksList.id = "links";
 
           var col = this.cellIndex;
           var row = this.parentNode.rowIndex;
 
-          var randomOrder = [0,1,2,3];
+          var randomOrder = [0, 1, 2, 3];
           randomOrder = shuffle(randomOrder);
           var buttons = [];
           var j = 0;
           for (var i = 0; i < 4; i++) {
             if (randomOrder[i] == 0) {
-              correctAnswerLink = addNewElement(addNewElement(linksList, 'li'), 'button', answers[row-2][col][randomOrder[i]]);
+              correctAnswerLink = addNewElement(
+                addNewElement(linksList, "li"),
+                "button",
+                answers[row - 2][col][randomOrder[i]]
+              );
             } else {
-              buttons[j] = addNewElement(addNewElement(linksList, 'li'), 'button', answers[row-2][col][randomOrder[i]]);
+              buttons[j] = addNewElement(
+                addNewElement(linksList, "li"),
+                "button",
+                answers[row - 2][col][randomOrder[i]]
+              );
               j++;
             }
           }
           answer2Link = buttons[0];
           answer3Link = buttons[1];
           answer4Link = buttons[2];
-          addNewClass(correctAnswerLink, 'btn_select');
-          addNewClass(answer2Link, 'btn_select');
-          addNewClass(answer3Link, 'btn_select');
-          addNewClass(answer4Link, 'btn_select');
+          addNewClass(correctAnswerLink, "btn_select");
+          addNewClass(answer2Link, "btn_select");
+          addNewClass(answer3Link, "btn_select");
+          addNewClass(answer4Link, "btn_select");
 
-          var el = addNewElement(div, 'ul');
-          closeLink = addNewElement(addNewElement(el, 'li'), 'button', strClose);
-          addNewClass(closeLink, 'btn_select btn_blue_light');
+          var el = addNewElement(div, "ul");
+          closeLink = addNewElement(
+            addNewElement(el, "li"),
+            "button",
+            strClose
+          );
+          addNewClass(closeLink, "btn_select btn_blue_light");
 
           xLink.onclick = close;
-          answer2Link.onclick = function() {
-            m.className += ' showAnswer';
-            m.getElementsByClassName("a")[0].children[0].innerHTML = "<h1 style='color:#E07070'>Incorrect!</h1><br /> " + m.getElementsByClassName("a")[0].children[0].innerHTML;
-            td.className = 'incorrect';
+          answer2Link.onclick = function () {
+            m.className += " showAnswer";
+            m.getElementsByClassName("a")[0].children[0].innerHTML =
+              "<h1 style='color:#E07070'>Incorrect!</h1><br /> " +
+              m.getElementsByClassName("a")[0].children[0].innerHTML;
+            td.className = "incorrect";
             return false;
           };
-          answer3Link.onclick = function() {
-            m.className += ' showAnswer';
-            m.getElementsByClassName("a")[0].children[0].innerHTML = "<h1 style='color:#E07070'>Incorrect!</h1><br /> " + m.getElementsByClassName("a")[0].children[0].innerHTML;
-            td.className = 'incorrect';
+          answer3Link.onclick = function () {
+            m.className += " showAnswer";
+            m.getElementsByClassName("a")[0].children[0].innerHTML =
+              "<h1 style='color:#E07070'>Incorrect!</h1><br /> " +
+              m.getElementsByClassName("a")[0].children[0].innerHTML;
+            td.className = "incorrect";
             return false;
           };
-          answer4Link.onclick = function() {
-            m.className += ' showAnswer';
-            m.getElementsByClassName("a")[0].children[0].innerHTML = "<h1 style='color:#E07070'>Incorrect!</h1><br /> " + m.getElementsByClassName("a")[0].children[0].innerHTML;
-            td.className = 'incorrect';
+          answer4Link.onclick = function () {
+            m.className += " showAnswer";
+            m.getElementsByClassName("a")[0].children[0].innerHTML =
+              "<h1 style='color:#E07070'>Incorrect!</h1><br /> " +
+              m.getElementsByClassName("a")[0].children[0].innerHTML;
+            td.className = "incorrect";
             return false;
           };
 
@@ -352,102 +400,102 @@ document.addEventListener('DOMContentLoaded', function() {
 
           linksList.parentNode.insertBefore(question[0], linksList);
           linksList.parentNode.insertBefore(question[1], linksList);
-          m.className = 'show';
+          m.className = "show";
         }
         return false;
       };
     };
   })();
 
-  var makeScoreHandler = function(team) {
-    return function() {
-      var score = window.prompt('Enter new score:', scores[team][0]);
+  var makeScoreHandler = function (team) {
+    return function () {
+      var score = window.prompt("Enter new score:", scores[team][0]);
       if (score) {
         score = parseInt(score);
-        scores[team][0] = score
+        scores[team][0] = score;
         nukeChildren(scores[team][1]);
-        addText(scores[team][1], '' + score);
+        addText(scores[team][1], "" + score);
         return false;
       }
-    }
+    };
   };
 
-  (function() {
+  (function () {
     var table, rowset, row, cell;
 
-    table = D.createElementNS(NS, 'table');
+    table = D.createElementNS(NS, "table");
     mDiv.parentNode.insertBefore(table, mDiv);
 
     // Titles for categories
-    rowset = addNewElement(table, 'thead');
-    row = addNewElement(rowset, 'tr');
-    row.className = 'title';
+    rowset = addNewElement(table, "thead");
+    row = addNewElement(rowset, "tr");
+    row.className = "title";
 
-    cell = addNewElement(row, 'th');
-    cell.setAttribute('colspan', '' + categories.length);
+    cell = addNewElement(row, "th");
+    cell.setAttribute("colspan", "" + categories.length);
 
-    var title = D.getElementsByTagNameNS(NS, 'title')[0];
-    addNewElement(cell, 'h1', title.textContent);
+    var title = D.getElementsByTagNameNS(NS, "title")[0];
+    addNewElement(cell, "h1", title.textContent);
 
     // Score
-    row = addNewElement(rowset, 'tr');
-    var addScoreCell = function(team) {
-      cell = addNewElement(row, 'td');
-      cell.colspan= "1";
-      cell = addNewElement(row, 'td');
+    row = addNewElement(rowset, "tr");
+    var addScoreCell = function (team) {
+      cell = addNewElement(row, "td");
+      cell.colspan = "1";
+      cell = addNewElement(row, "td");
 
-      var divP = D.createElementNS(NS, 'div');
-      divP.className= 'centerElements';
+      var divP = D.createElementNS(NS, "div");
+      divP.className = "centerElements";
       cell.appendChild(divP);
 
-      var div = D.createElementNS(NS, 'div');
-      div.className= 'scoreTitle';
+      var div = D.createElementNS(NS, "div");
+      div.className = "scoreTitle";
       divP.appendChild(div);
       div.appendChild(D.createTextNode(teams[team]));
 
-      div = D.createElementNS(NS, 'div');
-      div.className= 'score';
+      div = D.createElementNS(NS, "div");
+      div.className = "score";
       divP.appendChild(div);
-      div.appendChild(D.createTextNode('0'));
+      div.appendChild(D.createTextNode("0"));
       div.onclick = makeScoreHandler(team);
       return div;
     };
 
     scores.push([0, addScoreCell(0)]);
     if (categories.length > 2) {
-      cell = D.createElementNS(NS, 'td');
-      cell.setAttribute('colspan', '' + categories.length - 2);
+      cell = D.createElementNS(NS, "td");
+      cell.setAttribute("colspan", "" + categories.length - 2);
       row.appendChild(cell);
     }
 
-    row = addNewElement(rowset, 'tr');
-    row.className = 'categories';
+    row = addNewElement(rowset, "tr");
+    row.className = "categories";
 
-    categories.forEach(function(cat) {
-      cell = addNewElement(row, 'th', cat.title);
+    categories.forEach(function (cat) {
+      cell = addNewElement(row, "th", cat.title);
     });
 
     // Questions
-    rowset = addNewElement(table, 'tbody');
+    rowset = addNewElement(table, "tbody");
 
     var max = 0;
-    categories.forEach(function(cat) {
+    categories.forEach(function (cat) {
       if (cat.questions.length > max) {
         max = cat.questions.length;
       }
     });
 
     for (var i = 1; i <= max; ++i) {
-      row = addNewElement(rowset, 'tr');
+      row = addNewElement(rowset, "tr");
 
-      categories.forEach(function(cat) {
-        cell = addNewElement(row, 'td');
+      categories.forEach(function (cat) {
+        cell = addNewElement(row, "td");
         if (i <= cat.questions.length) {
-          addText(cell, '' + (i * 100));
-          cell.className = 'active';
+          addText(cell, "" + i * 100);
+          cell.className = "active";
           cell.onclick = makeClickHandler(cat.questions[i - 1], i * 100);
         } else {
-          addText(cell, '\u00A0');
+          addText(cell, "\u00A0");
         }
       });
     }

@@ -13,123 +13,131 @@
  * or in LICENSE.CC-BY-3 file.
  */
 
- @font-face {
-   font-family: 'StratumNo2-Bold';
-   src: url('fonts/StratumNo2-Bold.eot?#iefix') format('embedded-opentype'),  url('../../fonts/StratumNo2-Bold.otf')  format('opentype'),
-        url('fonts/StratumNo2-Bold.woff') format('woff'), url('../../fonts/StratumNo2-Bold.ttf')  format('truetype'), url('../../fonts/StratumNo2-Bold.svg#StratumNo2-Bold') format('svg');
-   font-weight: normal;
-   font-style: normal;
- }
-
 @font-face {
-	font-family: 'StratumNo1';
-	src: url('fonts/StratumNo1-Black.eot');
-	src: url('fonts/StratumNo1-Black.eot?#iefix') format('embedded-opentype'),
-		url('fonts/StratumNo1-Black.woff') format('woff'),
-		url('fonts/StratumNo1-Black.ttf') format('truetype');
-	font-weight: 900;
-	font-style: normal;
+  font-family: "StratumNo2-Bold";
+  src: url("fonts/StratumNo2-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../../fonts/StratumNo2-Bold.otf") format("opentype"),
+    url("fonts/StratumNo2-Bold.woff") format("woff"),
+    url("../../fonts/StratumNo2-Bold.ttf") format("truetype"),
+    url("../../fonts/StratumNo2-Bold.svg#StratumNo2-Bold") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'StratumNo1-M';
-	src: url('fonts/StratumNo1-Medium.eot');
-	src: url('fonts/StratumNo1-Medium.eot?#iefix') format('embedded-opentype'),
-		url('fonts/StratumNo1-Medium.woff') format('woff'),
-		url('fonts/StratumNo1-Medium.ttf') format('truetype');
-	font-weight: 500;
-	font-style: normal;
+  font-family: "StratumNo1";
+  src: url("fonts/StratumNo1-Black.eot");
+  src: url("fonts/StratumNo1-Black.eot?#iefix") format("embedded-opentype"),
+    url("fonts/StratumNo1-Black.woff") format("woff"),
+    url("fonts/StratumNo1-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'StratumNo1-R';
-	src: url('fonts/StratumNo1-Regular.eot');
-	src: url('fonts/StratumNo1-Regular.eot?#iefix') format('embedded-opentype'),
-		url('fonts/StratumNo1-Regular.woff') format('woff'),
-		url('fonts/StratumNo1-Regular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "StratumNo1-M";
+  src: url("fonts/StratumNo1-Medium.eot");
+  src: url("fonts/StratumNo1-Medium.eot?#iefix") format("embedded-opentype"),
+    url("fonts/StratumNo1-Medium.woff") format("woff"),
+    url("fonts/StratumNo1-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "StratumNo1-R";
+  src: url("fonts/StratumNo1-Regular.eot");
+  src: url("fonts/StratumNo1-Regular.eot?#iefix") format("embedded-opentype"),
+    url("fonts/StratumNo1-Regular.woff") format("woff"),
+    url("fonts/StratumNo1-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    font-family: 'StratumNo1';
-    font-size: 14pt;
-    background: #fff;
-    color: #000;
+  font-family: "StratumNo1";
+  font-size: 14pt;
+  background: #fff;
+  color: #000;
 }
 
 table {
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
-    width: 100%;
-    height: 100%;
-    table-layout: fixed;
-    padding: 1em;
-  }
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  padding: 1em;
+}
 
-table, tr, td, th {
-    vertical-align: middle;
-    text-align: center;
-    font-size: 1.35em;
-    border-collapse: separate;
-    cursor: default;
-    border-spacing: 0.2em;
+table,
+tr,
+td,
+th {
+  vertical-align: middle;
+  text-align: center;
+  font-size: 1.35em;
+  border-collapse: separate;
+  cursor: default;
+  border-spacing: 0.2em;
 }
 
 thead tr.title {
   height: 3em;
-  font-family: 'StratumNo1';
+  font-family: "StratumNo1";
   font-size: 20pt;
   background: #fff;
-  color: #DC4405;
+  color: #dc4405;
 }
 thead tr.categories {
   padding-top: 1em;
 }
 
 h1 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .categories th {
-    border: 0.1em solid #fff;
-    background: #fff;
-    color: #000;
-    font-family: 'StratumNo1-M';
+  border: 0.1em solid #fff;
+  background: #fff;
+  color: #000;
+  font-family: "StratumNo1-M";
 }
 
 .btn_select {
-    background: #003B5C;
-    border-radius: 4px;
-    text-shadow: 1px 1px 3px #666666;
-    box-shadow: 2px 2px 2px #666666;
-    color: #ffffff;
-    font-size: 14px;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
+  background: #003b5c;
+  border-radius: 4px;
+  text-shadow: 1px 1px 3px #666666;
+  box-shadow: 2px 2px 2px #666666;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }
 
 .btn_select:hover {
-    background: #006A8E;
-    text-decoration: none;
+  background: #006a8e;
+  text-decoration: none;
 }
 
 .btn_blue_light {
-    background: #003B5C;
+  background: #003b5c;
 }
 
 .btn_blue_light:hover {
-    background: #006A8E;
+  background: #006a8e;
 }
 
-.centerElements{
-  text-align:center;
+.centerElements {
+  text-align: center;
 }
 
 .email_popup {
@@ -145,179 +153,198 @@ h1 {
   padding-bottom: 0.4em;
 }
 
-.correct{
-    border: 0.2em solid #898989;
-    background: #fff;
-    color: #74D174;
-    font-weight: bold;
+.correct {
+  border: 0.2em solid #898989;
+  background: #fff;
+  color: #74d174;
+  font-weight: bold;
 }
 
-.incorrect{
-    border: 0.2em solid #898989;
-    background: #fff;
-    color: #E07070;
-    font-weight: bold;
+.incorrect {
+  border: 0.2em solid #898989;
+  background: #fff;
+  color: #e07070;
+  font-weight: bold;
 }
 
 .scoreTitle {
   display: inline;
-  font-family: 'StratumNo1-R';
+  font-family: "StratumNo1-R";
   font-size: 30px;
   color: #000;
 }
 
 .score {
   display: inline;
-  font-family: 'StratumNo1-M';
+  font-family: "StratumNo1-M";
   font-size: 30px;
   color: #000;
 }
 
 tbody td {
-    border: 0.2em solid #898989;
-    background: #fff;
-    color: #898989;
-    font-weight: bold;
+  border: 0.2em solid #898989;
+  background: #fff;
+  color: #898989;
+  font-weight: bold;
 }
 tbody td.active {
-    border: 0.2em solid #898989;
-    background: #898989;
-    color: #fff;
-    cursor: pointer;
+  border: 0.2em solid #898989;
+  background: #898989;
+  color: #fff;
+  cursor: pointer;
 }
 tbody td.active:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 div.q > p {
-    text-align: center;
+  text-align: center;
 }
 div.a > p {
-    text-align: center;
+  text-align: center;
 }
 
 tfoot {
-    height: 2em;
+  height: 2em;
 }
 tfoot div + div {
-    font-weight: bold;
+  font-weight: bold;
 }
-
 
 #m {
-    display: none;
+  display: none;
 }
 #m.show {
-    display: table;
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    vertical-align: middle;
-    border: 0.1em solid #fff;
+  display: table;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  vertical-align: middle;
+  border: 0.1em solid #fff;
 }
 #m > div {
-    display: table-cell;
-    vertical-align: middle;
-    padding: 2em;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 2em;
 }
 #m > div > div {
-    background: #fff;
-    border: 0.1em solid #fff;
+  background: #fff;
+  border: 0.1em solid #fff;
 }
 
 #m ul {
-    display: block;
-    list-style: none;
-    text-align: center;
+  display: block;
+  list-style: none;
+  text-align: center;
 }
 #m ul + ul {
-    display: none;
+  display: none;
 }
 
 #m li {
-    display: inline-block;
-    margin: 1em 2em;
+  display: inline-block;
+  margin: 1em 2em;
 }
-#m a, #m a:visited {
-    text-align: center;
-    text-decoration: none;
-    color: #009;
-    cursor: default;
+#m a,
+#m a:visited {
+  text-align: center;
+  text-decoration: none;
+  color: #009;
+  cursor: default;
 }
-#m a:active, #m a:focus, #m a:hover {
-    color: #00F;
+#m a:active,
+#m a:focus,
+#m a:hover {
+  color: #00f;
 }
 
 #x {
-    float: right;
-    font-size: 0.5em;
-    font-weight: bold;
-    padding: 0.1em 0.5em;
-    border-bottom: 0.1em solid #000;
-    border-left: 0.1em solid #000;
+  float: right;
+  font-size: 0.5em;
+  font-weight: bold;
+  padding: 0.1em 0.5em;
+  border-bottom: 0.1em solid #000;
+  border-left: 0.1em solid #000;
 }
-#x:hover, #x:focus {
-    background: #F00;
+#x:hover,
+#x:focus {
+  background: #f00;
 }
 
 #m div {
-    overflow: auto;
+  overflow: auto;
 }
 #m p {
-    margin: 1em 2em;
-    line-height: 1.5em;
+  margin: 1em 2em;
+  line-height: 1.5em;
 }
 .q div {
-    text-align: center;
+  text-align: center;
 }
 .q img {
-    height: 5em
+  height: 5em;
 }
 p {
-    text-align: justify;
+  text-align: justify;
 }
 
-#m .a { visibility: hidden; height: 0px; }
-#m.showAnswer .a { visibility: visible; height: 7em; }
-#m.showAnswer ul { display: none; }
-#m.showAnswer ul + ul { display: block; }
-#m.showAnswer #x { visibility: hidden; }
-
+#m .a {
+  visibility: hidden;
+  height: 0px;
+}
+#m.showAnswer .a {
+  visibility: visible;
+  height: 7em;
+}
+#m.showAnswer ul {
+  display: none;
+}
+#m.showAnswer ul + ul {
+  display: block;
+}
+#m.showAnswer #x {
+  visibility: hidden;
+}
 
 @media print {
-    body {
-        color: #fff;
-        background: #FFF;
-        font-size: 18pt;
-    }
-    #questions {
-        display: block !important;
-    }
+  body {
+    color: #fff;
+    background: #fff;
+    font-size: 18pt;
+  }
+  #questions {
+    display: block !important;
+  }
 
-    h2 {
-        page-break-before: always;
-    }
-    .q {
-        margin-bottom: 0.5em;
-        border-top: 1px dotted #000;
-        padding-top: 0.5em;
-        margin-top: 2em;
-    }
-    h2 + .q {
-        margin-top: 1em;
-    }
-    .a {
-        padding-left: 2em;
-        padding-bottom: 0.5em;
-        border-bottom: 1px dotted #000;
-        margin-bottom: 2em;
-        font-style: italic;
-    }
+  h2 {
+    page-break-before: always;
+  }
+  .q {
+    margin-bottom: 0.5em;
+    border-top: 1px dotted #000;
+    padding-top: 0.5em;
+    margin-top: 2em;
+  }
+  h2 + .q {
+    margin-top: 1em;
+  }
+  .a {
+    padding-left: 2em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px dotted #000;
+    margin-bottom: 2em;
+    font-style: italic;
+  }
 
-    table, #m, h1, img {
-        display: none;
-    }
+  table,
+  #m,
+  h1,
+  img {
+    display: none;
+  }
 }

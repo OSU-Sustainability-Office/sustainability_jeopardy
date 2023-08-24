@@ -9,9 +9,13 @@ export default class Question {
 
     // Ensure only one answer is correct.
     let correct = 0
-    this.answers.forEach(answer => {
+    this.answers.forEach((answer) => {
       if (answer.isCorrect === true) correct++
     })
-    if (correct !== 1) throw new Error("Question constructor called with invalid parameters. One, and only one, question must be 'correct'.")
+    if (correct !== 1) {
+      throw new Error(
+        "Question constructor called with invalid parameters. One, and only one, question must be 'correct'."
+      )
+    }
   }
 }
