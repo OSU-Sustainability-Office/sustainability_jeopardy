@@ -4,6 +4,10 @@
 
 This repository stores code for the OSU Sustainability Office's Sustainability Jeopardy game, used for tabling at various events. This repository used to store a previous version of jeopardy built with plain JS, PHP, HTML, and CSS. The current version has been updated to rely upon VueJS, and the rest of the standard OSU SO software stack.
 
+## Current State: Archived
+
+This repository will be archived effective October 19, 2025 due to lack of ongoing use. The website will be deactivated, and the codebase will no longer be maintained.
+
 ## Installation Steps
 
 - Fork this repo
